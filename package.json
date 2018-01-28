@@ -1,0 +1,156 @@
+{
+  "name": "killer-icon-theme",
+  "displayName": "killer icons",
+  "description": "Greatest icon theme of all time.",
+  "version": "3.2.1",
+  "publisher": "kylepg",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "homepage":
+    "https://github.com/PKief/vscode-killer-icon-theme/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PKief/vscode-killer-icon-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PKief/vscode-killer-icon-theme/issues"
+  },
+  "icon": "logo.png",
+  "galleryBanner": {
+    "color": "#263238",
+    "theme": "dark"
+  },
+  "categories": ["Themes"],
+  "keywords": ["icons", "theme", "killer", "icon-theme", "customization"],
+  "activationEvents": ["*"],
+  "main": "./out/src/extension",
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "killer-icon-theme",
+        "label": "killer icons",
+        "path": "./out/src/killer-icons.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "killer-icon-theme.activateIcons",
+        "title": "%command.activateIcons%"
+      },
+      {
+        "command": "killer-icon-theme.toggleIconPacks",
+        "title": "%command.toggleIconPacks%"
+      },
+      {
+        "command": "killer-icon-theme.changeFolderTheme",
+        "title": "%command.changeFolderTheme%"
+      },
+      {
+        "command": "killer-icon-theme.changeFolderColor",
+        "title": "%command.changeFolderColor%"
+      },
+      {
+        "command": "killer-icon-theme.restoreDefaultConfig",
+        "title": "%command.restoreDefaultConfig%"
+      },
+      {
+        "command": "killer-icon-theme.hidesExplorerArrows",
+        "title": "%command.hidesExplorerArrows%"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "%configuration.title%",
+      "properties": {
+        "killer-icon-theme.showWelcomeMessage": {
+          "type": "boolean",
+          "default": true,
+          "description": "%configuration.showWelcomeMessage%"
+        },
+        "killer-icon-theme.showUpdateMessage": {
+          "type": "boolean",
+          "default": true,
+          "description": "%configuration.showUpdateMessage%"
+        },
+        "killer-icon-theme.activeIconPack": {
+          "type": "string",
+          "default": "angular",
+          "description": "%configuration.activeIconPack%"
+        },
+        "killer-icon-theme.files.associations": {
+          "type": "object",
+          "default": {},
+          "description": "%configuration.files.associations%"
+        },
+        "killer-icon-theme.folders.associations": {
+          "type": "object",
+          "default": {},
+          "description": "%configuration.folders.associations%"
+        },
+        "killer-icon-theme.languages.associations": {
+          "type": "object",
+          "default": {},
+          "description": "%configuration.languages.associations%"
+        },
+        "killer-icon-theme.folders.theme": {
+          "type": "string",
+          "default": "specific",
+          "description": "%configuration.folders.theme%",
+          "enum": ["specific", "classic", "none"]
+        },
+        "killer-icon-theme.folders.color": {
+          "type": "string",
+          "default": "#90a4ae",
+          "description": "%configuration.folders.color%"
+        },
+        "killer-icon-theme.hidesExplorerArrows": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.hidesExplorerArrows%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "prebuild": "npm run clean",
+    "build": "npm run compile && npm run generateJson",
+    "postbuild": "npm run check",
+    "clean": "rimraf ./out",
+    "compile": "tsc -p ./",
+    "compile:watch": "tsc -watch -p ./",
+    "generateJson": "node -r ts-node/register ./scripts/icons/generateJson.ts",
+    "check": "node -r ts-node/register scripts/icons/checks",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "tslint": "tslint -c tslint.json ./src/**/*.ts ./scripts/**/*ts",
+    "pretest": "npm run build",
+    "test": "node ./node_modules/vscode/bin/test",
+    "bithound":
+      "bithound check git@github.com:PKief/vscode-killer-icon-theme.git",
+    "preview": "npm run build && node -r ts-node/register ./scripts/preview"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.0",
+    "opn": "^5.1.0",
+    "semver": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.45",
+    "@types/node": "^8.5.5",
+    "@types/puppeteer": "^0.13.8",
+    "bithound": "^1.7.0",
+    "mocha": "^4.1.0",
+    "puppeteer": "^0.13.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2",
+    "vscode": "^1.1.10"
+  },
+  "__metadata": {
+    "id": "5db78037-f674-459f-a236-db622c427c5b",
+    "publisherId": "f9e5bc2f-fea1-4075-917f-d83e01e69f56",
+    "publisherDisplayName": "Kyle George"
+  }
+}
